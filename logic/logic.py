@@ -59,11 +59,33 @@ def average_coll(*args, around=None):
         return f"{average_variable:.{around}f}"
 
 
-# flatten()
+def count_if(*args, condition=">0"):
+    variable = flatten(args)
+    k = 0
+
+    if isinstance(condition, str):
+        for char in variable:
+            num = to_number(char)
+            if num is None:
+                continue
+            if eval(f"{num}{condition}"):
+                k += 1
+
+    elif callable(condition):
+        for char in variable:
+            if condition(char):
+                k += 1
+
+    elif condition is True:
+        k = sum(1 for char in variable if char)
+
+    return k
 
 
 a = (1, "23", 324, "342.0", True, 3.4, False, "True", "False")
 
-print(summ_coll([1, [2, [3, 4, (1, 2)]]]))
-print(summ_coll(1, 2, [3, [4, [5]]], "6"))
-print(average_coll([1, [2, [3, 4]]], 5))
+# print(summ_coll([1, [2, [3, 4, (1, 2)]]]))
+# print(summ_coll(1, 2, [3, [4, [5]]], "6"))
+# print(average_coll([1, [2, [3, 4]]], 5))
+
+print(count_if(a, condition="!=False"))
