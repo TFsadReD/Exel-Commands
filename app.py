@@ -5,4 +5,4 @@ lists = [0, 1, 45]
 tuples = (0, "1", 45)
 
 print("summ_coll\n\
-average_value")
+average_coll")
