@@ -23,15 +23,19 @@ def to_number(variable):
             return None
 
 
+def flatten(variable):
+    result = []
+    for char in variable:
+        if isinstance(char, (list, tuple, set)):
+            result.extend(flatten(char))
+        else:
+            result.append(char)
+    return result
+
+
 def summ_coll(*args):
     summ = 0
-    variable = []
-
-    for arg in args:
-        if isinstance(arg, (list, tuple, set)):
-            variable.extend(arg)
-        else:
-            variable.append(arg)
+    variable = flatten(args)
 
     for char in variable:
         num_char = to_number(char)
@@ -42,13 +46,7 @@ def summ_coll(*args):
 
 
 def average_coll(*args, around=None):
-    variable = []
-
-    for arg in args:
-        if isinstance(arg, (list, tuple, set)):
-            variable.extend(arg)
-        else:
-            variable.append(arg)
+    variable = flatten(args)
 
     num_variable = summ_coll(*variable)
     if num_variable is None:
@@ -61,9 +59,11 @@ def average_coll(*args, around=None):
         return f"{average_variable:.{around}f}"
 
 
+# flatten()
+
+
 a = (1, "23", 324, "342.0", True, 3.4, False, "True", "False")
 
-print(summ_coll(a))
-print(summ_coll(a, 4, "456", True))
-print(average_coll(a, 4, "456", True))
-print(average_coll(1, 2, 3, 4, around=7))
+print(summ_coll([1, [2, [3, 4, (1, 2)]]]))
+print(summ_coll(1, 2, [3, [4, [5]]], "6"))
+print(average_coll([1, [2, [3, 4]]], 5))
