@@ -105,15 +105,53 @@ def summ_if(*args, condition=">0"):
     return summ
 
 
+def average_if(*args, condition=">0", around=None):
+    variable = flatten(args)
+    summ = 0
+    count = 0
+
+    if isinstance(condition, str):
+        for char in variable:
+            num = to_number(char)
+            if num is None:
+                continue
+            if eval(f"{num}{condition}"):
+                summ += num
+                count += 1
+
+    elif callable(condition):
+        for char in variable:
+            num = to_number(char)
+            if num is not None and condition(num):
+                summ += num
+                count += 1
+
+    elif condition is True:
+        summ = summ_coll(*args)
+        count = len(flatten(variable))
+
+
+    average_variable = summ / count
+    if around is None:
+        return average_variable
+    else:
+        return f"{average_variable:.{around}f}"
+
+
 # a = (1, "23", 324, "342.0", True, 3.4, False, "True", "False")
 # b = (1, 2, [3, [4, [5]]], "6")
+
+# print(len(flatten(b)))
 
 # print(count_if(a, condition="!=False"))
 # print(count_if(b, condition=">=3"))
 
 l = [1, "2", 3.5, True, False, "10", [5, "7"]]
 
-print(summ_if(l, condition=">3"))
-print(summ_if(l, condition="<=2"))
-print(summ_if(l, condition=lambda x: x % 2 == 1))
-print(summ_if(l, condition=True))
+# print(summ_if(l, condition=">3"))
+# print(summ_if(l, condition="<=2"))
+# print(summ_if(l, condition=lambda x: x % 2 == 1))
+# print(summ_if(l, condition=True))
+
+print(average_coll(l, around=2))
+print(average_if(l, condition="!= False", around=2))
