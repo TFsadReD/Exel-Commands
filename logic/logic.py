@@ -138,20 +138,14 @@ def average_if(*args, condition=">0", around=None):
         return f"{average_variable:.{around}f}"
 
 
-# a = (1, "23", 324, "342.0", True, 3.4, False, "True", "False")
-# b = (1, 2, [3, [4, [5]]], "6")
-
-# print(len(flatten(b)))
-
-# print(count_if(a, condition="!=False"))
-# print(count_if(b, condition=">=3"))
-
-l = [1, "2", 3.5, True, False, "10", [5, "7"]]
-
-# print(summ_if(l, condition=">3"))
-# print(summ_if(l, condition="<=2"))
-# print(summ_if(l, condition=lambda x: x % 2 == 1))
-# print(summ_if(l, condition=True))
-
-print(average_coll(l, around=2))
-print(average_if(l, condition="!= False", around=2))
+def if_error(condition, error=None, returning=None):
+    try:
+        if returning is None:
+            result = eval(f"{condition}")
+            return result
+        elif returning == True:
+            eval(f"{condition}")
+        else:
+            print("Error, use True or None")
+    except:
+        return error
