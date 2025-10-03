@@ -1,3 +1,3 @@
-version = "Exel Commands v. Alpha[0.8.2]"
+version = "Exel Commands v. Beta[0.8.2]"
 
 print(version)

@@ -146,6 +146,6 @@ def if_error(condition, error=None, returning=None):
         elif returning == True:
             eval(f"{condition}")
         else:
-            print("Error, use True or None")
+            print("Invalid argument")
     except:
         return error
