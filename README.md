@@ -25,6 +25,7 @@
   - count_if
   - summ_if
   - average_if
+  - if_error
 - Примеры
 - Лицензия
 
@@ -148,6 +149,22 @@ average_if([-2, -1, 0, 1, 2], condition=">0")
 
 ---
 
+### `if_error(condition, error=None, returning=None)`
+
+Проверяет выражение на выполнимость, при ошибке выдавая значение, указанное вами:
+
+```python
+a = "10"
+b = "1f"
+с = if_error(f"int({a})", "No")
+print(c)
+# 10
+print(if_error(f"int({b})", b))
+# 1f
+```
+
+---
+
 ## 📊 Примеры
 
 ```python
@@ -172,7 +189,9 @@ print(average_if(data, condition=True))               # '2.75'
 
 - **TFsadReD**
 
----
+<br><br>
+
+<br><br>
 
 <div align="center">
 <h1>Exel Commands<br>🔢 Utilities for Working with Collections</h1>
@@ -189,20 +208,20 @@ The idea for this project was inspired by `Excel` and its built-in commands.
 
 ## 📂 Contents
 
-* Features
-* Installation
-* Usage
-
-  * type_query
-  * to_number
-  * flatten
-  * summ_coll
-  * average_coll
-  * count_if
-  * summ_if
-  * average_if
-* Examples
-* License
+- Features
+- Installation
+- Usage
+  - type_query
+  - to_number
+  - flatten
+  - summ_coll
+  - average_coll
+  - count_if
+  - summ_if
+  - average_if
+  - if_error
+- Examples
+- License
 
 ---
 
@@ -320,6 +339,22 @@ Calculates the average value of elements by condition:
 ```python
 average_if([-2, -1, 0, 1, 2], condition=">0")
 # 1.5
+```
+
+---
+
+### `if_error(condition, error=None, returning=None)`
+
+Checks the expression for feasibility, returning the value you specified in case of an error:
+
+```python
+a = "10"
+b = "1f"
+с = if_error(f"int({a})", "No")
+print(c)
+# 10
+print(if_error(f"int({b})", b))
+# 1f
 ```
 
 ---
