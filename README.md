@@ -171,10 +171,10 @@ print(if_error(f"int({b})", b))
 data = [1, "2", [3, "true", "false"], (4, 5.5)]
 
 print(summ_coll(data))                                # 16.5
-print(average_coll(data, around=1))                   # '3.3'
+print(average_coll(data, around=1))                   # 3.3
 print(count_if(data, condition=">=2"))                # 4
 print(summ_if(data, condition=lambda x: x % 2 == 1))  # 9
-print(average_if(data, condition=True))               # '2.75'
+print(average_if(data, condition=True))               # 2.75
 ```
 
 ---
@@ -365,10 +365,10 @@ print(if_error(f"int({b})", b))
 data = [1, "2", [3, "true", "false"], (4, 5.5)]
 
 print(summ_coll(data))                                # 16.5
-print(average_coll(data, around=1))                   # '3.3'
+print(average_coll(data, around=1))                   # 3.3
 print(count_if(data, condition=">=2"))                # 4
 print(summ_if(data, condition=lambda x: x % 2 == 1))  # 9
-print(average_if(data, condition=True))               # '2.75'
+print(average_if(data, condition=True))               # 2.75
 ```
 
 ---
