@@ -56,7 +56,7 @@ def average_coll(*args, around=None):
     if around is None:
         return average_variable
     else:
-        return f"{average_variable:.{around}f}"
+        return float(f"{average_variable:.{around}f}")
 
 
 def count_if(*args, condition=">0"):
