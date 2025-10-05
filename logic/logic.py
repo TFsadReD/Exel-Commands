@@ -135,7 +135,7 @@ def average_if(*args, condition=">0", around=None):
     if around is None:
         return average_variable
     else:
-        return f"{average_variable:.{around}f}"
+        return float(f"{average_variable:.{around}f}")
 
 
 def if_error(condition, error=None, returning=None):
