@@ -108,7 +108,7 @@ summ_coll([1, 2], (3, 4))
 
 ```python
 average_coll([1, 2, 3, 4])            # 2.5
-average_coll([1, 2, 3, 4], around=2)  # '2.50'
+average_coll([1, 2, 3, 4], around=2)  # 2.50
 ```
 
 ---
